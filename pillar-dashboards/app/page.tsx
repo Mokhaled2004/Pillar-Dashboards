@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import FeaturesGrid from "@/components/landing/FeaturesGrid";
@@ -16,7 +17,14 @@ export default function Home() {
         <AboutUsSection />
         <FeaturesGrid />
         <PricingBundlesSection />
-        <ContactUsSection />
+
+        {/* Wrap components using useSearchParams in Suspense */}
+        <Suspense
+          fallback={<div className="py-20 text-center">Loading...</div>}
+        >
+          <ContactUsSection />
+        </Suspense>
+
         <Footer />
       </div>
     </SplashScreen>
